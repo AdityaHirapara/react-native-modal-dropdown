@@ -132,6 +132,7 @@ export default class ModalDropdown extends Component {
       this.setState({
         showDropdown: true
       });
+      this.props.onDropdownDidShow();
     });
   }
 
@@ -236,11 +237,11 @@ export default class ModalDropdown extends Component {
     }
     const bottomSpace = windowHeight - this._buttonFrame.y - this._buttonFrame.h;
     const rightSpace = windowWidth - this._buttonFrame.x;
-    const showInBottom = bottomSpace >= dropdownHeight || bottomSpace >= this._buttonFrame.y;
+    const showInBottom = bottomSpace >= dropdownHeight + 85 || bottomSpace >= this._buttonFrame.y;
     const showInLeft = rightSpace >= this._buttonFrame.x;
 
     const positionStyle = {
-      top: showInBottom ? this._buttonFrame.y + this._buttonFrame.h : Math.max(0, this._buttonFrame.y - dropdownHeight),
+      top: showInBottom ? this._buttonFrame.y + this._buttonFrame.h : Math.max(0, this._buttonFrame.y - dropdownHeight - 15),
     };
 
     if (showInLeft) {
